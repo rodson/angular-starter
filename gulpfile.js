@@ -41,7 +41,47 @@ gulp.task('images', function () {
     .pipe($.size({title: 'images'}));
 });
 
+// Copy all files at the root level (app)
+gulp.task('copy', function () {
+
+});
+
+// Copy web fonts to dist
+gulp.task('fonts', function () {
+
+});
+
 // Compile and automatically prefix stylesheets
 gulp.task('styles', function () {
 
-})
+});
+
+// Scan your HTML for assets & optimize them
+gulp.task('html', function () {
+
+});
+
+// Clean output directory
+gulp.task('clean', function () {
+
+});
+
+// Watch files for changes & reload
+gulp.task('serve', ['styles'], function () {
+
+});
+
+// Build and serve the output from the dist build
+gulp.task('serve:dist', ['default'], function () {
+
+});
+
+// Build production files, the default task
+gulp.task('default', ['clean'], function (cb) {
+
+});
+
+// Run PageSpeed Insights
+gulp.task('pagespeed', function (cb) {
+
+});
