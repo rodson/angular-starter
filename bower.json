@@ -1,0 +1,21 @@
+{
+  "name": "angular-starter",
+  "version": "1.0.0",
+  "homepage": "https://github.com/rodson/angular-starter",
+  "authors": [
+    "rodson <rodsonluo@gmail.com>"
+  ],
+  "description": "A starter project for angular application.",
+  "main": "app.js",
+  "keywords": [
+    "angular"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
