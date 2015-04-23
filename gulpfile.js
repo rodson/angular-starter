@@ -43,7 +43,13 @@ gulp.task('images', function () {
 
 // Copy all files at the root level (app)
 gulp.task('copy', function () {
-
+  return gulp.src([
+    'app/*',
+    '!app/*.html'
+  ], {
+    dot: true
+  }).pipe(gulp.dest('dist'))
+    .pipe($.size({title: 'copy'}));
 });
 
 // Copy web fonts to dist
