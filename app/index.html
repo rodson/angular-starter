@@ -6,12 +6,21 @@
   <title>Angular Starter</title>
   <meta name="description" content="A starter project for angular application.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="assets/styles/normalize.css">
 </head>
 <body>
   <ul>
-    <li><a href=""></a>view1</li>
-    <li><a href=""></a>view2</li>
+    <li><a ui-sref="view1">view1</a></li>
+    <li><a ui-sref="view2">view2</a></li>
   </ul>
 
+  <div ui-view></div>
+
+  <div>Angular starter app</div>
+
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
