@@ -11,7 +11,7 @@
     $stateProvider
       .state('view2', {
         url: '/view2',
-        templateUrl: 'view2/view2.html',
+        templateUrl: 'app/view2/view2.html',
         controller: 'View2Controller'
       });
   }
