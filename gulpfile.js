@@ -26,13 +26,12 @@ gulp.task('jshint', function () {
   return gulp.src('app/**/*.js')
     .pipe(reload({stream: true, once: true}))
     .pipe($.jshint())
-    .pipe($.jshint.reporter('jshint-stylish'))
-    .pipe($.if(!browserSync.active, $.jshint.reporter('fail')));
+    .pipe($.jshint.reporter('jshint-stylish'));
 });
 
 // Optimize images
 gulp.task('images', function () {
-  return gulp.src('app/assets/images/**/*')
+  return gulp.src('assets/images/**/*')
     .pipe($.cache($.imagemin({
       progressive: true,
       interlaced: true
@@ -54,7 +53,7 @@ gulp.task('copy', function () {
 
 // Copy web fonts to dist
 gulp.task('fonts', function () {
-  return gulp.src(['app/assets/fonts/**'])
+  return gulp.src(['assets/fonts/**'])
     .pipe(gulp.dest('dist/fonts'))
     .pipe($.size({title: 'fonts'}));
 });
@@ -62,8 +61,8 @@ gulp.task('fonts', function () {
 // Compile and automatically prefix stylesheets
 gulp.task('styles', function () {
   return gulp.src([
-    'app/assets/styles/*.scss',
-    'app/assets/styles/**/*.css'
+    'assets/styles/*.scss',
+    'assets/styles/**/*.css'
   ])
     .pipe($.sourcemaps.init())
     .pipe($.changed('.tmp/styles', {extension: '.css'}))
@@ -84,7 +83,7 @@ gulp.task('styles', function () {
 gulp.task('html', function () {
   var assets = $.useref.assets({searchPath: '{.tmp,app}'});
 
-  return gulp.src('app/**/*.html')
+  return gulp.src('./**/*.html')
     .pipe(assets)
     // Concatenate and minify JavaScript
     .pipe($.if('*.js', $.uglify({preserveComments: 'some'})))
@@ -112,10 +111,10 @@ gulp.task('serve', ['styles'], function () {
     server: ['.tmp', 'app']
   });
 
-  gulp.watch(['app/**/*.html'], reload);
-  gulp.watch(['app/assets/styles/**/*.{scss,css}'], ['style', reload]);
+  gulp.watch(['./**/*.html'], reload);
+  gulp.watch(['assets/styles/**/*.{scss,css}'], ['style', reload]);
   gulp.watch(['app/**/*.js'], ['jshint']);
-  gulp.watch(['app/assets/images/**/*'], [reload]);
+  gulp.watch(['assets/images/**/*'], [reload]);
 });
 
 // Build and serve the output from the dist build
