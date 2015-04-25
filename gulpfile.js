@@ -36,7 +36,7 @@ gulp.task('images', function () {
       progressive: true,
       interlaced: true
     })))
-    .pipe(gulp.dest('dist/images'))
+    .pipe(gulp.dest('dist/assets/images'))
     .pipe($.size({title: 'images'}));
 });
 
@@ -54,7 +54,7 @@ gulp.task('copy', function () {
 // Copy web fonts to dist
 gulp.task('fonts', function () {
   return gulp.src(['assets/fonts/**'])
-    .pipe(gulp.dest('dist/fonts'))
+    .pipe(gulp.dest('dist/assets/fonts'))
     .pipe($.size({title: 'fonts'}));
 });
 
@@ -65,17 +65,17 @@ gulp.task('styles', function () {
     'assets/styles/components/components.scss'
   ])
     .pipe($.sourcemaps.init())
-    .pipe($.changed('.tmp/styles', {extension: '.css'}))
+    .pipe($.changed('.tmp/assets/styles', {extension: '.css'}))
     .pipe($.sass({
       precision: 10,
       onError: console.error.bind(console, 'Sass error:')
     }))
     .pipe($.autoprefixer({browsers: AUTOPREFIXER_BROWSERS}))
     .pipe($.sourcemaps.write())
-    .pipe(gulp.dest('.tmp/styles'))
+    .pipe(gulp.dest('.tmp/assets/styles'))
     // Concatenate and minify styles
     .pipe($.if('*.css', $.csso()))
-    .pipe(gulp.dest('dist/styles'))
+    .pipe(gulp.dest('dist/assets/styles'))
     .pipe($.size({title: 'styles'}));
 });
 
@@ -108,11 +108,11 @@ gulp.task('serve', ['styles'], function () {
     notify: false,
     // Customize the BrowserSync console logging prefix
     logPrefix: 'AS',
-    server: ['.tmp', 'app']
+    server: ['.tmp', '.']
   });
 
   gulp.watch(['./**/*.html'], reload);
-  gulp.watch(['assets/styles/**/*.{scss,css}'], ['style', reload]);
+  gulp.watch(['assets/styles/**/*.{scss,css}'], ['styles', reload]);
   gulp.watch(['app/**/*.js'], ['jshint']);
   gulp.watch(['assets/images/**/*'], [reload]);
 });
