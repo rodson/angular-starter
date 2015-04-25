@@ -7,7 +7,9 @@
   <meta name="description" content="A starter project for angular application.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <!-- build:css assets/styles/main.min.css -->
   <link rel="stylesheet" href="assets/styles/main.css">
+  <!-- endbuild -->
 </head>
 <body>
   <ul>
@@ -19,12 +21,17 @@
 
   <div>Angular starter app</div>
 
+<!-- build:js assets/scripts/lib.min.js -->
 <script src="bower_components/angular/angular.min.js"></script>
 <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+<!-- endbuild -->
+
+<!-- build:js assets/scripts/app.min.js -->
 <script src="app/app.module.js"></script>
 <script src="app/view1/view1.module.js"></script>
 <script src="app/view2/view2.module.js"></script>
 <script src="app/view1/view1.controller.js"></script>
 <script src="app/view2/view2.controller.js"></script>
+<!-- endbuild -->
 </body>
 </html>

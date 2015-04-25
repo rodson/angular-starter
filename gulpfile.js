@@ -42,13 +42,12 @@ gulp.task('images', function () {
 
 // Copy all files at the root level (app)
 gulp.task('copy', function () {
-  // return gulp.src([
-  //   'app/*',
-  //   '!app/*.html'
-  // ], {
-  //   dot: true
-  // }).pipe(gulp.dest('dist'))
-  //   .pipe($.size({title: 'copy'}));
+  return gulp.src([
+    'app/**/*',
+  ], {
+    dot: true
+  }).pipe(gulp.dest('dist/app'))
+    .pipe($.size({title: 'copy'}));
 });
 
 // Copy web fonts to dist
@@ -81,9 +80,9 @@ gulp.task('styles', function () {
 
 // Scan your HTML for assets & optimize them
 gulp.task('html', function () {
-  var assets = $.useref.assets({searchPath: '{.tmp,app}'});
+  var assets = $.useref.assets({searchPath: '{.tmp,.}'});
 
-  return gulp.src('./**/*.html')
+  return gulp.src('./index.html')
     .pipe(assets)
     // Concatenate and minify JavaScript
     .pipe($.if('*.js', $.uglify({preserveComments: 'some'})))
