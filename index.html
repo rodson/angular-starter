@@ -19,7 +19,7 @@
 
   <div ui-view></div>
 
-  <div>Angular starter app</div>
+  <div>Angular starter app: v<span app-version></span></div>
 
 <!-- build:js assets/scripts/lib.min.js -->
 <script src="bower_components/angular/angular.js"></script>
@@ -32,6 +32,8 @@
 <script src="app/view2/view2.module.js"></script>
 <script src="app/view1/view1.controller.js"></script>
 <script src="app/view2/view2.controller.js"></script>
+<script src="app/components/version/version.module.js"></script>
+<script src="app/components/version/version.directive.js"></script>
 <!-- endbuild -->
 </body>
 </html>
