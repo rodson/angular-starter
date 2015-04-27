@@ -4,6 +4,7 @@
   angular
     .module('app', [
       'ui.router',
+      'ngMaterial',
       'app.version',
       'app.view1',
       'app.view2'
