@@ -8,6 +8,7 @@ var runSequence = require('run-sequence');
 var browserSync = require('browser-sync');
 var pageSpeed = require('psi');
 var reload = browserSync.reload;
+var karma = require('karma').server;
 
 var AUTOPREFIXER_BROWSERS = [
   'ie >= 10',
@@ -20,6 +21,17 @@ var AUTOPREFIXER_BROWSERS = [
   'android >= 4.4',
   'bb >= 10'
 ];
+
+// Unit test
+gulp.task('test', function (done) {
+  karma.start({
+    configFile: __dirname + '/karma.conf.js',
+    autoWatch: false,
+    singleRun: true
+  }, function () {
+    done();
+  });
+});
 
 // Lint JavaScript
 gulp.task('jshint', function () {
@@ -112,7 +124,7 @@ gulp.task('serve', ['styles'], function () {
 
   gulp.watch(['./**/*.html'], reload);
   gulp.watch(['assets/styles/**/*.{scss,css}'], ['styles', reload]);
-  gulp.watch(['app/**/*.js'], ['jshint']);
+  gulp.watch(['app/**/*.js'], ['jshint', 'test']);
   gulp.watch(['assets/images/**/*'], [reload]);
 });
 
