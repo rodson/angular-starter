@@ -114,7 +114,7 @@ gulp.task('html', function () {
 gulp.task('clean', del.bind(null, ['.tmp', 'dist/*', '!dist/.git'], {dot: true}));
 
 // Watch files for changes & reload
-gulp.task('serve', ['styles', 'karma'], function () {
+gulp.task('serve', ['styles'], function () {
   browserSync({
     notify: false,
     // Customize the BrowserSync console logging prefix
@@ -129,12 +129,14 @@ gulp.task('serve', ['styles', 'karma'], function () {
 });
 
 // Build and serve the output from the dist build
-gulp.task('serve:dist', ['default'], function () {
+gulp.task('dist', ['default'], function () {
   browserSync({
     notify: false,
     server: 'dist'
   });
 });
+
+gulp.task('dev', ['serve', 'karma']);
 
 // Build production files, the default task
 gulp.task('default', ['clean'], function (cb) {
