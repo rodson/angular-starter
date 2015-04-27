@@ -22,12 +22,12 @@ var AUTOPREFIXER_BROWSERS = [
   'bb >= 10'
 ];
 
-// Unit test
-gulp.task('test', function (done) {
+// Config karma for unit testing
+gulp.task('karma', function (done) {
   karma.start({
     configFile: __dirname + '/karma.conf.js',
-    autoWatch: false,
-    singleRun: true
+    autoWatch: true,
+    singleRun: false
   }, function () {
     done();
   });
@@ -114,7 +114,7 @@ gulp.task('html', function () {
 gulp.task('clean', del.bind(null, ['.tmp', 'dist/*', '!dist/.git'], {dot: true}));
 
 // Watch files for changes & reload
-gulp.task('serve', ['styles'], function () {
+gulp.task('serve', ['styles', 'karma'], function () {
   browserSync({
     notify: false,
     // Customize the BrowserSync console logging prefix
@@ -124,7 +124,7 @@ gulp.task('serve', ['styles'], function () {
 
   gulp.watch(['./**/*.html'], reload);
   gulp.watch(['assets/styles/**/*.{scss,css}'], ['styles', reload]);
-  gulp.watch(['app/**/*.js'], ['jshint', 'test']);
+  gulp.watch(['app/**/*.js'], ['jshint']);
   gulp.watch(['assets/images/**/*'], [reload]);
 });
 
